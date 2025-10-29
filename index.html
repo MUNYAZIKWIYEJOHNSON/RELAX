@@ -5,6 +5,21 @@
   <title>SOULHAVEN</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
+     body {
+      margin: 0;
+      height: 100vh;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: background-image 1s ease-in-out;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    }
        body {
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
               url('bg.jpg');
@@ -268,6 +283,24 @@
   </main>
 
   <script>
+       const images = [
+      'a.jpg','b.jpg','c.jpg','d.jpg','e.jpg','f.jpg','g.jpg','h.jpg','i.jpg','j.jpg',
+      'k.jpg','l.jpg','m.jpg','n.jpg','o.jpg','p.jpg','q.jpg','r.jpg','s.jpg','t.jpg',
+      'u.jpg','v.jpg','w.jpg','x.jpg','y.jpg','z.jpg',
+      '1.jpg','2.jpg','3.jpg','4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg',
+      '10.jpg','11.jpg','12.jpg','13.jpg','14.jpg','15.jpg','16.jpg','17.jpg','18.jpg','19.jpg',
+      '20.jpg','21.jpg','22.jpg','23.jpg','24.jpg','25.jpg','26.jpg','27.jpg','28.jpg','29.jpg'
+    ];
+
+    let index = 0;
+    function changeBackground() {
+      document.body.style.backgroundImage = `url('${images[index]}')`;
+      index = (index + 1) % images.length;
+    }
+
+    // Hindura buri 5 seconds
+    changeBackground();
+    setInterval(changeBackground, 5000);
     /* --- UI handlers --- */
     const sidebar = document.getElementById('sidebar');
     function toggleSidebar(){ sidebar.classList.toggle('show'); }
@@ -578,6 +611,7 @@ Niba ushaka indi mirongo ijyanye n’ikibazo runaka (nko gupfusha, uburwayi, kwi
   </script>
 </body>
 </html>
+
 
 
 
