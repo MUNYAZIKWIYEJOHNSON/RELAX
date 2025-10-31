@@ -2,15 +2,19 @@
 <html lang="rw">
 <head>
   <meta charset="UTF-8" />
-  <title>SOULHAVEN</title>
+  <title>SoulHaven</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
        body {
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bg.jpg');
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+              url('bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   color: white; 
+}
+
+    body {
   background-image: url('munyazikwiye.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -47,6 +51,7 @@
         .theme-p{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('p.jpg'); --accent:#ff7a5c; }
         .theme-q{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('q.jpg'); --accent:#ff7a5c; }
         .theme-s{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('s.jpg'); --accent:#ff7a5c; }
+         .theme-t{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('s.jpg'); --accent:#ff7a5c; }
           .theme-u{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('t.jpg'); --accent:#ff7a5c; }
            .theme-v{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('u.jpg'); --accent:#ff7a5c; }
             .theme-w{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('v.jpg'); --accent:#ff7a5c; }
@@ -65,7 +70,7 @@
                          .theme-10{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('10.jpg'); --accent:#ff7a5c; }
                           .theme-11{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('11.jpg'); --accent:#ff7a5c; }
                          .theme-12{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('12.jpg'); --accent:#ff7a5c; }
-                          .theme-13{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('13.jpg'); --accent:#ff7a5c; }                
+                          .theme-13{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('13.jpg'); --accent:#ff7a5c; }                 .theme-s{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('s.jpg'); --accent:#ff7a5c; }
           .theme-14{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('14.jpg'); --accent:#ff7a5c; }
            .theme-15{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('15.jpg'); --accent:#ff7a5c; }
              .theme-16{ --bg-gradient: linear-gradient(180deg, rgba(30,10,20,0.45), rgba(10,2,5,0.6)), url('16.jpg'); --accent:#ff7a5c; }
@@ -147,10 +152,14 @@
       #sidebar.show + #main{ margin-left:220px; }
       .gallery-grid img{ height:120px }
     }
+     #calculatorIcon {
+      font-size: 60px;
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body class="theme-green">
-
 
   <button id="toggleSidebar" title="Menu" onclick="toggleSidebar()">☰ Menu</button>
 
@@ -233,14 +242,14 @@
     <hr style="border-color: rgba(255,255,255,0.04); margin:12px 0;">
     <button onclick="showContent('movie')">🎬 Movie</button>
     <button onclick="showContent('music')">🎵 Music</button>
-    <a href="simple calculator.html">calculator</a>
     <hr style="border-color: rgba(255,255,255,0.04); margin:12px 0;">
-    <button onclick="showContent('purpose')">ℹ️ About Us</button>
-    <button onclick="showContent('about')">💬 comment</button>
+    <button onclick="showContent('about')">ℹ️ About Us</button>
+    <button onclick="showContent('calculator')">🧮 CALCULATOR</button>
+
     
 <div class="card">
   <form id="feedbackForm">
-    <label for="name">👤 NAME:</label>
+    <label for="name">👤 name:</label>
     <input type="text" id="name" name="name" placeholder="name" required />
 
     <label for="message">💬 message:</label>
@@ -249,6 +258,7 @@
     <button type="submit">📨 send</button>
   </form>
 </div>
+<p id="myLink"></p>
 
 
   </aside>
@@ -263,6 +273,9 @@
   </main>
 
   <script>
+    /* --- UI handlers --- */
+    const sidebar = document.getElementById('sidebar');
+    function toggleSidebar(){ sidebar.classList.toggle('show'); }
 
     // theme switcher
     const themeSelect = document.getElementById('themeSelect');
@@ -295,15 +308,18 @@
 
       if(section === 'purpose'){
         content.innerHTML = `
-          <h2>ℹ️ About Us</h2>
+          <h2>❤️ Purpose </h2>
           <div class="card">
             <p>this project designed to support people going through difficult times, those experiencing grief, or those seeking mental relaxation..</p>
-             <p>“This website is designed to help people who are hurting, grieving, dealing with emotional trauma, suffering from stress, or looking to relax their minds. We provide calming and comforting content, including soothing films, soft music, words of love and encouragement, as well as a space for breathing and mental relaxation.”</p>
-
-        <p>“Our goal is to offer you a space of gentleness and rest, where there is no pressure or judgment. You are allowed to be yourself, to feel what you feel, and to have the freedom to be at ease.”</p>
-
-        <p>“If you’re going through a difficult time or feeling alone, this is a place created to bring you calm and help you find renewed hope. Our message is: ‘You are not alone—there is a place where your heart can rest in peace.’”</strong></p>
-         
+            <h3>Slogans of comfort</h3>
+            <ul>
+              <li>“You are not alone — there is a place for your heart to rest.”<br><em>“You are not alone,there is a place where your heart can find rest.”</em></li>
+              <li>“Breathe. Pause. You are allowed to rest.”<br><em>“Pause for a moment. You are granted permission to rest.”</em></li>
+              <li>“Small moments of calm make big differences.”<br><em>“A brief moment of stillness can have a powerful impact.”</em></li>
+              <li>“It’s okay to feel — kindness begins with yourself.”<br><em>“It's okay to feel what you're feeling — kindness begins with you..”em></li>
+              <li>“Hold on to hope — every sunrise brings new chances.”<br><em>“Hold on to hope — the rising sun brings new opportunities.”</em></li>
+            </ul>
+            <p style="margin-top:8px;color:var(--muted)">Use these slogans as banners, social posts, or gentle reminders.</p>
           </div>
         `;
         return;
@@ -325,9 +341,10 @@
               <li>“You are not alone — there is a place for your heart to rest.”<br><em>“You are not alone,there is a place where your heart can find rest.”</em></li>
               <li>“Breathe. Pause. You are allowed to rest.”<br><em>“Pause for a moment. You are granted permission to rest.”</em></li>
               <li>“Small moments of calm make big differences.”<br><em>“A brief moment of stillness can have a powerful impact.”</em></li>
-              <li>“It’s okay to feel — kindness begins with yourself.”<br><em>“It's okay to feel what you're feeling — kindness begins with you..”</em></li>
+              <li>“It’s okay to feel — kindness begins with yourself.”<br><em>“It's okay to feel what you're feeling — kindness begins with you..”em></li>
               <li>“Hold on to hope — every sunrise brings new chances.”<br><em>“Hold on to hope — the rising sun brings new opportunities.”</em></li>
             </ul>
+            <p style="margin-top:8px;color:var(--muted)">Use these slogans as banners, social posts, or gentle reminders.</
           </div>
         `;
         return;
@@ -350,16 +367,21 @@
             <iframe width="300" height="200" src="https://www.youtube.com/embed/xgsa2p0lIPY" allowfullscreen></iframe>
 <iframe width="300" height="200" src="https://www.youtube.com/embed/kxtkqoU8a5g" allowfullscreen></iframe>
 <iframe width="300" height="200" src="https://www.youtube.com/embed/IbQiZE6KuWc" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/IbQiZE6KuWc" allowfullscreen></iframe>
- <iframe src="https://www.youtube.com/embed/rw39Uy-5mwY" allowfullscreen></iframe>
- <iframe src="https://www.youtube.com/embed/lCOF9LN_Zxs" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/mxoMdWvaEEQ" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/HSOtku1j600" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/Er4oqBGuhkw" allowfullscreen></iframe>
- <iframe src="https://www.youtube.com/embed/dtPXEf1R9ZY" allowfullscreen></iframe>
- <iframe src="https://www.youtube.com/embed/Z2GfmFANDlM" allowfullscreen></iframe>
-<iframe src="https://www.youtube.com/embed/dnBAU8Co6PA" allowfullscreen></iframe>
-  </div>
+<iframe width="300" height="200" src="https://www.youtube.com/embed/xgsa2p0lIPY" allowfullscreen></iframe>
+<iframe width="300" height="200" src="https://www.youtube.com/embed/kxtkqoU8a5g" allowfullscreen></iframe>
+<iframe width="300" height="200" src="https://www.youtube.com/embed/IbQiZE6KuWc" allowfullscreen></iframe>
+ <iframe width="300" height="200" src="https://www.youtube.com/embed/rw39Uy-5mwY" allowfullscreen></iframe>
+ <iframe width="300" height="200" src="https://www.youtube.com/embed/lCOF9LN_Zxs" allowfullscreen></iframe>
+<iframe width="300" height="200" src="https://www.youtube.com/embed/mxoMdWvaEEQ" allowfullscreen></iframe>
+<iframe width="300" height="200" src="https://www.youtube.com/embed/HSOtku1j600" allowfullscreen></iframe>
+<iframe width="300" height="200" src="https://www.youtube.com/embed/Er4oqBGuhkw" allowfullscreen></iframe>
+ <iframe width="300" height="200" src="https://www.youtube.com/embed/dtPXEf1R9ZY" allowfullscreen></iframe>
+ <iframe width="300" height="200" src="https://www.youtube.com/embed/Z2GfmFANDlM" allowfullscreen></iframe>
+<iframe width="300" height="200" src="https://www.youtube.com/embed/dnBAU8Co6PA" allowfullscreen></iframe>
+  <iframe width="300" height="200" src="https://www.youtube.com/embed/1ZYbU82GVz4=2Sn1jRxYMjuJEtKu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+ <iframe width="300" height="200" src="https://www.youtube.com/embed/UOJ4V3DAAx8=qIKrwj3y4gNzZiZI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+
         `;
         return;
       }
@@ -433,8 +455,8 @@ Niba ushaka indi mirongo ijyanye n’ikibazo runaka (nko gupfusha, uburwayi, kwi
         content.innerHTML = `
           <h2>🎬 Movie & Relax Clips</h2>
           <div class="card">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/JmL1kunyRXI?si=dBvuQKeOVusNoUHe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             <iframe width="300" height="200" src="https://www.youtube.com/embed/EXeTwQWrcwY" title="Trailer" frameborder="0" allowfullscreen></iframe>
+            <iframe width="300" height="200" src="https://www.youtube.com/embed/8ugaeA-nMTc" title="Trailer 2" frameborder="0" allowfullscreen></iframe>
              <video width="300" height="200" controls>
           <source src="A dog journy.mp4" type="video/mp4">
           <source src="safety.mp4" type="video/mp4">
@@ -474,33 +496,35 @@ Niba ushaka indi mirongo ijyanye n’ikibazo runaka (nko gupfusha, uburwayi, kwi
           <h2>🎵 Music</h2>
 
           <div class="card audio-row">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/Wky7Gz_5CZs?si=NhV97PWUOD-wctxc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/2HbKqm4o0w5wEeEFXm2sD4?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0y1QJc3SJVPKJ1OvFmFqe6?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         <iframe width="300" height="200" src="https://www.youtube.com/embed/xgsa2p0lIPY" frameborder="0" allowfullscreen></iframe>
         <iframe width="300" height="200" src="https://www.youtube.com/embed/CedhfuMMRNk" frameborder="0" allowfullscreen></iframe>
         <iframe width="300" height="200" src="https://www.youtube.com/embed/35AdtzquJYg/71pf0LoNrGccGhiy" frameborder="0" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/PTotFu9NJ6I?si=UXjwjkBLs-9YQFJr" frameborder="0" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/RJBkZukjltA?si=yHYX3tGbLuTkP3sz" frameborder="0" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/P8QgAhhh-HM?si=oX1Yv1HWZpPAJg3T" frameborder="0" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/_JJt3CI4Fhk?si=QDv8TLmncYjBpNWu" frameborder="0" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/2AH5t_o7lmg?si=UDUBXBH0RDFYrPI7" frameborder="0" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/r_s9rszKTBE?si=7b1ZsnM90uDvqLoi" frameborder="0" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/GIDiI5kyBDQ?si=W3Gv6SvEVjeJSX27" frameborder="0" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/oUFJJNQGwhk?si=Z1u6soCxNr7LyfxO" frameborder="0" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/ryenmS_sKtY?si=A4UhxxOqc-VGSuOq" frameborder="0" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/0kvZDA4_cec?si=W0w2J2AOBJ_gTMp3" frameborder="0" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/kxtkqoU8a5g?si=UNlw2yeEu3VVTVkD" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/PTotFu9NJ6I=UXjwjkBLs-9YQFJr" frameborder="0" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/RJBkZukjltA=yHYX3tGbLuTkP3sz" frameborder="0" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/P8QgAhhh-HM=oX1Yv1HWZpPAJg3T" frameborder="0" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/_JJt3CI4Fhk=QDv8TLmncYjBpNWu" frameborder="0" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/2AH5t_o7lmg=UDUBXBH0RDFYrPI7" frameborder="0" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/r_s9rszKTBE=7b1ZsnM90uDvqLoi" frameborder="0" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/GIDiI5kyBDQ=W3Gv6SvEVjeJSX27" frameborder="0" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/oUFJJNQGwhk=Z1u6soCxNr7LyfxO" frameborder="0" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/ryenmS_sKtY=A4UhxxOqc-VGSuOq" frameborder="0" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/0kvZDA4_cec=W0w2J2AOBJ_gTMp3" frameborder="0" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/kxtkqoU8a5g=UNlw2yeEu3VVTVkD" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/0GWX8sysRac?si=ei4a3MTt2nXcpbLz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/Fjb99SVqM5w?si=fzFOt2JYwmdweDFE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/A0j06l8H1os?si=ZaztSlczCLMOD2C-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/MWPYhebILb4?si=VyBjfFqb4rJg9PqQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/hCrtcVDgCGw?si=8_IhrL0YJCvZYeze" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/5-ZiKXrnvog?si=Dqq3nu9Rzq3pwH_d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/FtMwqvE0EAg?si=8cvSIeSBFbFvtBu2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/ScywH5NcTQk?si=QAxgHD0PAzmsAlq4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/CdWpV9fvrnM?si=DNk13M3cyqzd-wri" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/2JYNXTCOFL0?si=XtfwVRwU9F8xG3Ws" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="300" height="200" src="https://www.youtube.com/embed/iWy4W5JLcNo?si=1-uNc-iVDQVFv8iB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/0GWX8sysRac=ei4a3MTt2nXcpbLz" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/Fjb99SVqM5w=fzFOt2JYwmdweDFE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/A0j06l8H1os=ZaztSlczCLMOD2C-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/MWPYhebILb4=VyBjfFqb4rJg9PqQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/hCrtcVDgCGw=8_IhrL0YJCvZYeze" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/5-ZiKXrnvog=Dqq3nu9Rzq3pwH_d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/FtMwqvE0EAg=8cvSIeSBFbFvtBu2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/ScywH5NcTQk=QAxgHD0PAzmsAlq4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/CdWpV9fvrnM=DNk13M3cyqzd-wri" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/2JYNXTCOFL0=XtfwVRwU9F8xG3Ws" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/iWy4W5JLcNo=1-uNc-iVDQVFv8iB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br>
         <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/78bpIziExqiI9qztvNFlQu?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/53iuhJlwXhSER5J2IYYv1W?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/0fTSzq9jAh4c36UVb4V7CB?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -514,12 +538,21 @@ Niba ushaka indi mirongo ijyanye n’ikibazo runaka (nko gupfusha, uburwayi, kwi
         <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/30bz48tNheigpZZ3Od0Qa2?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/3gC3hlgNjDj51QP4UKH8QU?utm_source=generator" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/7KwbS2y5QhnDJgTjjBDHyL?utm_source=generator&theme=0" width="50%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/2HbKqm4o0w5wEeEFXm2sD4?utm_source=generator" width="50%" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0y1QJc3SJVPKJ1OvFmFqe6?utm_source=generator" width="50%" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2qprrdC3aDvYuB2w2SwUe5?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         
         `;
         return;
+      }
+      if(section === 'calculator'){
+        content.innerHTML = `
+       <h2> 🧮 EASY USE CALCULTOR</h2>
+       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="calculator.html">calculator</a>
+         `;
+        return;
+          document.getElementById("calculatorIcon").addEventListener("click", function() {
+      // Fungura calculator yawe (page cyangwa app)
+      window.location.href = "calculator.html"; // Hindura iyi URL ukurikije aho calculator yawe iri
+    });
+
       }
 
   document.getElementById("feedbackForm").addEventListener("submit", function (e) {
@@ -562,19 +595,9 @@ Niba ushaka indi mirongo ijyanye n’ikibazo runaka (nko gupfusha, uburwayi, kwi
     // initialize default view
     showContent('home');
   </script>
+  <footer>
+    <p>&copy; 2025 SOULHAVEN</p>
+  </footer>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
