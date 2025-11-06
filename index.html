@@ -5,35 +5,25 @@
   <title>SoulHaven</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
-    /* Amafoto agaragare neza kuri mobile */
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-/* Ibice by'urubuga bihindure imiterere kuri mobile */
+.box {
+  width: 30%;
+  margin: 10px;
+  background: #ddd;
+}
+
+/* Iyi niyo ihindura ibintu kuri ecran ntoya */
 @media (max-width: 768px) {
-  body {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-
-  .container, .section, .content {
-    width: 100%;
-    padding: 10px;
-  }
-
-  nav a {
-    display: block;
-    text-align: center;
-    padding: 12px;
-  }
-
-  h1, h2 {
-    font-size: 1.5rem;
+  .box {
+    width: 90%;
   }
 }
+
 
        body {
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
@@ -689,6 +679,7 @@ Niba ushaka indi mirongo ijyanye n’ikibazo runaka (nko gupfusha, uburwayi, kwi
 </body>
 
 </html>
+
 
 
 
