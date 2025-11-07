@@ -253,7 +253,7 @@
     <input type="text" id="name" name="name" placeholder="name" required />
 
     <label for="message">💬 message:</label>
-    <textarea id="message" name="message" placeholder="comment..." required></textarea>
+    <textarea id="comment" name="message" placeholder="comment..." required></textarea>
 
     <button type="submit">📨 send</button>
   </form>
@@ -661,10 +661,20 @@ Niba ushaka indi mirongo ijyanye n’ikibazo runaka (nko gupfusha, uburwayi, kwi
 
     // initialize default view
     showContent('home');
+     function sendFeedback() {
+      let comment = document.getElementById("comment").value;
+      if (comment.trim() === "") {
+        alert("Andika igitekerezo mbere yo kohereza!");
+      } else {
+        alert("Urakoze kubw’igitekerezo cyawe 💚");
+        document.getElementById("comment").value = "";
+      }
+    }
   </script>
 </body>
 
 </html>
+
 
 
 
