@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOULHAVEN - Music</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                  url('cd.jpg') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .playlist {
+      background: rgba(194, 67, 137, 0.1);
+      border-radius: 20px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 85%;
+      max-width: 650px;
+      box-shadow: 0 0 15px rgba(199, 83, 174, 0.2);
+      animation: fadeInUp 2s ease;
+    }
+
+    .track {
+      margin: 30px 0;
+      position: relative;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .waves {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 30px;
+      margin-top: 10px;
+      gap: 4px;
+    }
+
+    .bar {
+      width: 5px;
+      background: #4caf50;
+      border-radius: 10px;
+      height: 5px;
+      animation: none;
+    }
+
+    /* Animation when playing */
+    .playing .bar {
+      animation: bounce 1s infinite ease-in-out;
+    }
+
+    .playing .bar:nth-child(1) { animation-delay: 0s; }
+    .playing .bar:nth-child(2) { animation-delay: 0.1s; }
+    .playing .bar:nth-child(3) { animation-delay: 0.2s; }
+    .playing .bar:nth-child(4) { animation-delay: 0.3s; }
+    .playing .bar:nth-child(5) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+      0%, 100% { height: 5px; }
+      50% { height: 25px; }
+    }
+
+    p {
+      font-style: italic;
+      color: #e0e0e0;
+    }
+
+    form {
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 30px;
+      width: 80%;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    textarea {
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+      padding: 10px;
+      font-family: inherit;
+    }
+
+    button {
+      background: #4caf50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎵 SoulHaven Music Zone 🎶</h1>
+  <p>Fata akanya, humeka neza, wumve amajwi akuruhura umutima.</p>
+
+  <div class="playlist">
+    <div class="track">
+      <h3>🌊 Ocean Waves</h3>
+      <p>Amashusho y’amazi atemba atuma umutima utuza kandi utekana.</p>
+      <audio controls onplay="startWave(this)" onpause="stopWave(this)">
+        <source src="relax.mp3" type="audio/mpeg">
+      </audio>
+      <div class="waves">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+
+    <div class="track">
+      <h3>☔ Calm Rain</h3>
+      <p>Imvura itonyanga ituma uhumeka neza kandi wibagirwa ibitekerezo bikuremereye.</p>
+      <audio controls onplay="startWave(this)" onpause="stopWave(this)">
+        <source src="meditation.mp3" type="audio/mpeg">
+      </audio>
+      <div class="waves">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+
+    <div class="track">
+      <h3>💤 Deep Sleep Tones</h3>
+      <p>Amajwi yoroheje akugeza mu mutuzo wimbitse mbere yo gusinzira.</p>
+      <audio controls onplay="startWave(this)" onpause="stopWave(this)">
+        <source src="aka.mp3" type="audio/mpeg">
+      </audio>
+      <div class="waves">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  <div class="track">
+      <h3>💤 Deep Sleep Tones</h3>
+      <p>Amajwi yoroheje akugeza mu mutuzo wimbitse mbere yo gusinzira.</p>
+      <audio controls onplay="startWave(this)" onpause="stopWave(this)">
+        <source src="a.mp3" type="audio/mpeg">
+      </audio>
+      <div class="waves">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  <div class="track">
+      <h3>💤 Deep Sleep Tones</h3>
+      <p>Amajwi yoroheje akugeza mu mutuzo wimbitse mbere yo gusinzira.</p>
+      <audio controls onplay="startWave(this)" onpause="stopWave(this)">
+        <source src="b.mp3" type="audio/mpeg">
+      </audio>
+      <div class="waves">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  <div class="track">
+      <h3>💤 Deep Sleep Tones</h3>
+      <p>Amajwi yoroheje akugeza mu mutuzo wimbitse mbere yo gusinzira.</p>
+      <audio controls onplay="startWave(this)" onpause="stopWave(this)">
+        <source src="c.mp3" type="audio/mpeg">
+      </audio>
+      <div class="waves">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  <div class="track">
+      <h3>💤 Deep Sleep Tones</h3>
+      <p>Amajwi yoroheje akugeza mu mutuzo wimbitse mbere yo gusinzira.</p>
+      <audio controls onplay="startWave(this)" onpause="stopWave(this)">
+        <source src="d.mp3" type="audio/mpeg">
+      </audio>
+      <div class="waves">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  <div class="track">
+      <h3>💤 Deep Sleep Tones</h3>
+      <p>Amajwi yoroheje akugeza mu mutuzo wimbitse mbere yo gusinzira.</p>
+      <audio controls onplay="startWave(this)" onpause="stopWave(this)">
+        <source src="e.mp3" type="audio/mpeg">
+      </audio>
+      <div class="waves">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  <div class="track">
+      <h3>💤 Deep Sleep Tones</h3>
+      <p>Amajwi yoroheje akugeza mu mutuzo wimbitse mbere yo gusinzira.</p>
+      <audio controls onplay="startWave(this)" onpause="stopWave(this)">
+        <source src="f.mp3" type="audio/mpeg">
+      </audio>
+      <div class="waves">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  <div class="track">
+      <h3>💤 Deep Sleep Tones</h3>
+      <p>Amajwi yoroheje akugeza mu mutuzo wimbitse mbere yo gusinzira.</p>
+      <audio controls onplay="startWave(this)" onpause="stopWave(this)">
+        <source src="g.mp3" type="audio/mpeg">
+      </audio>
+      <div class="waves">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  <div class="track">
+      <h3>💤 Deep Sleep Tones</h3>
+      <p>Amajwi yoroheje akugeza mu mutuzo wimbitse mbere yo gusinzira.</p>
+      <audio controls onplay="startWave(this)" onpause="stopWave(this)">
+        <source src="h.mp3" type="audio/mpeg">
+      </audio>
+      <div class="waves">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  <div class="track">
+      <h3>💤 Deep Sleep Tones</h3>
+      <p>Amajwi yoroheje akugeza mu mutuzo wimbitse mbere yo gusinzira.</p>
+      <audio controls onplay="startWave(this)" onpause="stopWave(this)">
+        <source src="j.mp3" type="audio/mpeg">
+      </audio>
+      <div class="waves">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  <form id="feedbackForm">
+    <h3>🕊️ Siga igitekerezo cyawe</h3>
+    <label for="comment">Ni iyihe ndirimbo yakugiriye akamaro?</label><br>
+    <textarea id="comment" rows="3" placeholder="Andika hano..."></textarea><br>
+    <button type="button" onclick="sendFeedback()">Ohereza</button>
+  </form>
+
+  <script>
+    // Kwerekana animation igihe audio ikina
+    function startWave(audio) {
+      stopAllWaves();
+      let waves = audio.nextElementSibling;
+      waves.classList.add("playing");
+    }
+
+    function stopWave(audio) {
+      let waves = audio.nextElementSibling;
+      waves.classList.remove("playing");
+    }
+
+    function stopAllWaves() {
+      document.querySelectorAll(".waves").forEach(w => w.classList.remove("playing"));
+    }
+
+    // Form feedback
+    function sendFeedback() {
+      let comment = document.getElementById("comment").value;
+      if (comment.trim() === "") {
+        alert("Andika igitekerezo mbere yo kohereza!");
+      } else {
+        alert("Urakoze kubw’igitekerezo cyawe 💚");
+        document.getElementById("comment").value = "";
+      }
+    }
+  </script>
+
+</body>
+</html>
